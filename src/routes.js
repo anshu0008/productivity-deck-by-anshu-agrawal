@@ -1,6 +1,6 @@
 export const routes = {
   root: "/",
-  Kanban: {
+  productivity: {
     index: "/kanban",
     pomodoro: "/pomodoro",
     news: "/news",
