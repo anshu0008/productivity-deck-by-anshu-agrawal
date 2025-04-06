@@ -13,7 +13,7 @@ import { DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE } from "./constant";
 import Header from "./Header";
 import List from "./List";
 
-export const News = () => {
+const News = () => {
   const {
     page,
     searchTerm = "",
@@ -96,3 +96,5 @@ export const News = () => {
     </div>
   );
 };
+
+export default News;
