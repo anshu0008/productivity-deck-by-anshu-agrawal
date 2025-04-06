@@ -2,10 +2,18 @@ import React from "react";
 
 import NoData from "components/common/NoData";
 import { Typography } from "neetoui";
-import { isEmpty } from "ramda";
+import { isEmpty, isNil } from "ramda";
 import { useTranslation } from "react-i18next";
 
-import { convertDate, isEmptyOrUndefined, fallbackImage } from "./constant";
+import {
+  convertDate,
+  isEmptyOrUndefined,
+  fallbackImage,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  DEFAULT_AUTHOR,
+  DEFAULT_IMAGE,
+} from "./constant";
 
 const List = ({ articles, searchTerm }) => {
   const { t } = useTranslation();
@@ -31,10 +39,12 @@ const List = ({ articles, searchTerm }) => {
           <div className="flex max-w-2xl flex-col gap-6">
             <div className="flex flex-col gap-1">
               <Typography style="h2" weight="bold">
-                {article.title}
+                {isNil(article.title) ? DEFAULT_TITLE : article.title}
               </Typography>
               <Typography className="text-gray-600" style="h4" weight="medium">
-                {article.description.slice(0, 300)}
+                {isNil(article.description)
+                  ? DEFAULT_DESCRIPTION
+                  : article.description.slice(0, 300)}
                 <a
                   className="text-blue-300"
                   href={article.url}
@@ -46,7 +56,8 @@ const List = ({ articles, searchTerm }) => {
               </Typography>
             </div>
             <Typography className="text-gray-500" style="body2">
-              {convertDate(article.publishedAt)} &middot; {article.author}
+              {convertDate(article.publishedAt)} &middot;{" "}
+              {isNil(article.author) ? DEFAULT_AUTHOR : article.author}
             </Typography>
           </div>
           <div className="h-36 w-64 rounded-lg border-2">
@@ -54,6 +65,9 @@ const List = ({ articles, searchTerm }) => {
               alt={article.title}
               className="h-full w-full rounded-lg object-fill"
               src={fallbackImage(article.urlToImage)}
+              onError={e => {
+                e.currentTarget.src = DEFAULT_IMAGE;
+              }}
             />
           </div>
         </div>

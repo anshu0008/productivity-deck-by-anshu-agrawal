@@ -7,6 +7,8 @@ import ChangeSourceModal from "./ChangeSourceModal ";
 import Filter from "./Filter";
 import SearchBar from "./SearchBar";
 
+import { tagsLabelValues, isEmptyOrUndefined } from "../constant";
+
 const Header = ({
   updateQueryParams,
   searchTerm,
@@ -20,18 +22,12 @@ const Header = ({
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [searchKey, setSearchKey] = useState(searchTerm || "");
 
-  const arr = [
-    { label: "search", value: searchTerm },
-    { label: "date", value: dateTo },
-    { label: "source", value: source },
-    { label: "category", value: category },
-  ].filter(
-    item => item.value !== null && item.value !== "" && item.value !== undefined
-  );
-
-  const isEmptyArr = arr.every(
-    item => item.value === null || item.value === ""
-  );
+  const arr = tagsLabelValues({
+    searchTerm,
+    dateTo: dateTo || dateFrom,
+    source,
+    category,
+  });
 
   const handleTagClose = item => {
     if (item.label === "search") {
@@ -91,7 +87,7 @@ const Header = ({
               onClick={() => setIsOpenFilter(true)}
             />
           </div>
-          {!isEmptyArr && (
+          {!isEmptyOrUndefined(arr) && (
             <div className="flex items-center justify-center gap-x-2">
               <Typography className="text-gray-500" style="body1">
                 {totalResults} results for :
