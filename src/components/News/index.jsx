@@ -32,7 +32,7 @@ export const News = () => {
     source,
     category,
   };
-  console.log("params", params);
+
   const { data: { articles, totalResults } = {}, isFetching } = useNewsFetch({
     q: searchTerm,
     page: Number(page) || DEFAULT_PAGE_INDEX,
@@ -86,6 +86,7 @@ export const News = () => {
       )}
       <div className="mt-10 self-end">
         <Pagination
+          className="neetix-pagination"
           count={totalResults || 1}
           navigate={handlePageNavigation}
           pageNo={Number(page) || DEFAULT_PAGE_INDEX}

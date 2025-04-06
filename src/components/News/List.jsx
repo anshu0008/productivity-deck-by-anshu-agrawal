@@ -5,7 +5,7 @@ import { Typography } from "neetoui";
 import { isEmpty } from "ramda";
 import { useTranslation } from "react-i18next";
 
-import { convertDate, isEmptyOrUndefined } from "./constant";
+import { convertDate, isEmptyOrUndefined, fallbackImage } from "./constant";
 
 const List = ({ articles, searchTerm }) => {
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ const List = ({ articles, searchTerm }) => {
   }
 
   return (
-    <div className="flex flex-col items-center p-2 ">
+    <div className="flex flex-col items-center p-2">
       {articles?.map(article => (
         <div
           className="mt-10 flex w-full items-start justify-between border-b-2 px-10 py-4 shadow-sm"
@@ -53,7 +53,7 @@ const List = ({ articles, searchTerm }) => {
             <img
               alt={article.title}
               className="h-full w-full rounded-lg object-fill"
-              src={article.urlToImage}
+              src={fallbackImage(article.urlToImage)}
             />
           </div>
         </div>
