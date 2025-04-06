@@ -40,6 +40,9 @@ const News = () => {
     from: dateFrom,
     to: dateTo,
     sources: source,
+    category: Array.isArray(category)
+      ? category.map(item => item).join(",")
+      : category,
   });
 
   const handlePageNavigation = page =>

@@ -43,8 +43,31 @@ export const newsOptions = [
 
 export const fallbackImage = poster => {
   if (poster === "N/A" || isNil(poster)) {
-    return "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsBGOs2225fFqTfnl5EKlrEUBn5-drby1x3Q&s";
+    return DEFAULT_IMAGE;
   }
 
-  return poster;
+  return `${poster}`;
+};
+
+export const DEFAULT_DESCRIPTION =
+  "Get the latest news from around the world. Stay updated with the latest headlines, breaking news, and in-depth analysis on current events. Explore a wide range of topics including politics, business, technology, entertainment, and more. Our news platform provides real-time updates and comprehensive coverage to keep you informed and engaged.";
+
+export const DEFAULT_TITLE = "News App";
+
+export const DEFAULT_AUTHOR = "Anshu Agrawal";
+
+export const DEFAULT_IMAGE =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsBGOs2225fFqTfnl5EKlrEUBn5-drby1x3Q&s";
+
+export const tagsLabelValues = ({ searchTerm, dateTo, source, category }) => {
+  const arr = [
+    { label: "search", value: searchTerm },
+    { label: "date", value: dateTo },
+    { label: "source", value: source },
+    { label: "category", value: category },
+  ].filter(
+    ({ value }) => value !== null && value !== "" && value !== undefined
+  );
+
+  return arr;
 };
