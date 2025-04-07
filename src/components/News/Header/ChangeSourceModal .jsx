@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Modal, Select, Button, Typography } from "@bigbinary/neetoui";
+import { useTranslation } from "react-i18next";
 
 import { newsOptions } from "../constant";
 
@@ -11,12 +12,14 @@ const ChangeSourceModal = ({
 }) => {
   const [newsSource, setNewsSource] = useState({});
 
+  const { t } = useTranslation();
+
   const handleCancel = () => {
     setIsOpenModal(false);
   };
 
   const handleSave = () => {
-    updateQueryParams({ source: newsSource.value });
+    updateQueryParams({ source: newsSource.value, category: null });
     handleCancel();
   };
 
@@ -30,21 +33,29 @@ const ChangeSourceModal = ({
     >
       <Modal.Header>
         <Typography style="h2" weight="bold">
-          Change news source
+          {t("news.list.changeSource")}
         </Typography>
       </Modal.Header>
       <Modal.Body>
         <Select
-          label="News source"
+          label={t("news.list.newSource")}
           options={newsOptions}
-          placeholder="Select news source"
+          placeholder={t("news.list.selectSource")}
           value={newsSource}
           onChange={setNewsSource}
         />
       </Modal.Body>
       <Modal.Footer className="flex justify-start">
-        <Button label="Save" style="primary" onClick={handleSave} />
-        <Button label="Cancel" style="text" onClick={handleCancel} />
+        <Button
+          label={t("news.list.save")}
+          style="primary"
+          onClick={handleSave}
+        />
+        <Button
+          label={t("news.list.cancel")}
+          style="text"
+          onClick={handleCancel}
+        />
       </Modal.Footer>
     </Modal>
   );

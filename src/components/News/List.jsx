@@ -51,12 +51,12 @@ const List = ({ articles, searchTerm }) => {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  ...Know more
+                  {t("news.list.readMore")}
                 </a>
               </Typography>
             </div>
             <Typography className="text-gray-500" style="body2">
-              {convertDate(article.publishedAt)} &middot;{" "}
+              {convertDate(article.publishedAt)} &middot;
               {isNil(article.author) ? DEFAULT_AUTHOR : article.author}
             </Typography>
           </div>

@@ -20,7 +20,7 @@ const News = () => {
     dateFrom = null,
     dateTo = null,
     source = null,
-    category,
+    category = null,
   } = useQueryParams();
   const history = useHistory();
 
@@ -61,6 +61,8 @@ const News = () => {
       ...params,
       ...updatedValue,
     };
+
+    console.log("updatedParam", updatedParam);
 
     history.push(
       isEmpty(updatedParam.searchTerm)
