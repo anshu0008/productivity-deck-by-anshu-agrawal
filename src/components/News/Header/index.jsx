@@ -8,7 +8,7 @@ import ChangeSourceModal from "./ChangeSourceModal ";
 import Filter from "./Filter";
 import SearchBar from "./SearchBar";
 
-import { tagsLabelValues, isEmptyOrUndefined } from "../constant";
+import { tagsLabelValues, isEmptyOrUndefined } from "../utils";
 
 const Header = ({
   updateQueryParams,

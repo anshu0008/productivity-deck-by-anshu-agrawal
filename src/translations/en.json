@@ -46,7 +46,6 @@
     "stop": "Pause",
     "reset": "Reset",
     "timerSetting": {
-      "pomodoro": "Pomodoro",
       "shortBreak": "Short break",
       "longBreak": "Long break"
     }
@@ -73,10 +72,10 @@
     "financialPost": "Financial post"
   },
   "tags": {
-    "search": "Search",
-    "date": "Date",
-    "source": "Source",
-    "category": "Category"
+    "search": "search",
+    "date": "date",
+    "source": "source",
+    "category": "category"
   },
   "default": {
     "title": "News app",

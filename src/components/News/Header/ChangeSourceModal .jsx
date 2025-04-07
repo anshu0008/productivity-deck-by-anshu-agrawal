@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Modal, Select, Button, Typography } from "@bigbinary/neetoui";
 import { useTranslation } from "react-i18next";
 
-import { newsOptions } from "../constant";
+import { getNewsSourceOptions } from "../utils";
 
 const ChangeSourceModal = ({
   setIsOpenModal,
@@ -11,6 +11,7 @@ const ChangeSourceModal = ({
   updateQueryParams,
 }) => {
   const [newsSource, setNewsSource] = useState({});
+  const newsSourceOptions = getNewsSourceOptions();
 
   const { t } = useTranslation();
 
@@ -39,7 +40,7 @@ const ChangeSourceModal = ({
       <Modal.Body>
         <Select
           label={t("news.list.newSource")}
-          options={newsOptions}
+          options={newsSourceOptions}
           placeholder={t("news.list.selectSource")}
           value={newsSource}
           onChange={setNewsSource}
