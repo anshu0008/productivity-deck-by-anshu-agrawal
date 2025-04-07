@@ -5,16 +5,19 @@ import classNames from "classnames";
 import { useSearchOnFocus } from "hooks/useSearchOnFocus";
 import { AddCircle, Delete } from "neetoicons";
 import { Button, Input, Typography } from "neetoui";
+import { useTranslation } from "react-i18next";
 import { useKanbanStore } from "stores/useKanbanStore";
 
 const Kanban = () => {
-  const { columns, addTask, moveTask, deleteTask } = useKanbanStore();
+  const { columns, addTask, moveTask, deleteTask } = useKanbanStore.pick();
   const [input, setInput] = useState({ todo: "", inprogress: "", done: "" });
   const [isAddTasks, setIsAddTasks] = useState({
     todo: false,
     inprogress: false,
     done: false,
   });
+
+  const { t } = useTranslation();
 
   const inputRef = useRef(null);
   useSearchOnFocus({ inputRef });
@@ -42,7 +45,7 @@ const Kanban = () => {
   return (
     <div className="flex h-full w-full flex-col gap-10 p-7">
       <Typography style="h1" weight="bold">
-        Kanban Board
+        {t("kanban.title")}
       </Typography>
       <DragDropContext onDragEnd={handleDragEnd}>
         <div className="grid h-full grid-cols-3 gap-4">
@@ -102,7 +105,7 @@ const Kanban = () => {
                 {isAddTasks[colId] && (
                   <Input
                     className="mt-4 w-full px-2 py-1 text-sm"
-                    placeholder="Add task..."
+                    placeholder={t("kanban.placeholder")}
                     ref={inputRef}
                     value={input[colId]}
                     onChange={e =>
@@ -127,7 +130,7 @@ const Kanban = () => {
                   setIsAddTasks(prev => ({ [colId]: !prev[colId] }))
                 }
               >
-                Add New Task
+                {t("kanban.addTask")}
               </Button>
             </div>
           ))}

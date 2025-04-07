@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import { Button } from "@bigbinary/neetoui";
+import { useTranslation } from "react-i18next";
 
 import { formatTime } from "./constant";
 
@@ -12,6 +13,8 @@ const Timer = ({ settings, setActiveTab, activeTab }) => {
     mode: "Pomodoro",
   });
   const intervalRef = useRef(null);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isRunning.check) {
@@ -63,13 +66,17 @@ const Timer = ({ settings, setActiveTab, activeTab }) => {
       <div className="flex gap-x-4">
         <Button
           disabled={timeLeft === 0}
-          label={isRunning.check ? "PAUSE" : "START"}
+          label={isRunning.check ? t("pomodoro.stop") : t("pomodoro.start")}
           style="secondary"
           onClick={() =>
             setIsRunning(prev => ({ ...prev, check: !prev.check }))
           }
         />
-        <Button label="RESET" style="secondary" onClick={handleReset} />
+        <Button
+          label={t("pomodoro.reset")}
+          style="secondary"
+          onClick={handleReset}
+        />
       </div>
     </div>
   );

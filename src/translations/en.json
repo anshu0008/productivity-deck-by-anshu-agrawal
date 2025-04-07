@@ -1,5 +1,4 @@
 {
-  "helloWorld": "Hello World",
   "pageNotFound": {
     "title": "The page you're looking for can't be found",
     "label": "Back to home"
@@ -7,5 +6,81 @@
   "title": {
     "emptySearchKey": "Enter any news genre search",
     "movieNotFound": "No News found"
+  },
+  "kanban": {
+    "title": "Kanban mode",
+    "placeholder": "Add task",
+    "addTask": "Add new task"
+  },
+  "news": {
+    "title": "News mode",
+    "searchPlaceholder": "Search for news",
+    "noResults": "No results found",
+    "loading": "Loading...",
+    "clearAll": "Clear all",
+    "filter": {
+      "title": "Filter",
+      "keywordLabel": "Keyword or phrase",
+      "keyword": "Enter keyword",
+      "categoryLabel": "Category",
+      "category": "Select category",
+      "source": "Source",
+      "dateFrom": "Date of publication from",
+      "dateTo": "Date of publication to",
+      "done": "Done",
+      "clear": "Clear filters",
+      "datePlaceholder": "YYYY-MM-DD"
+    },
+    "list": {
+      "readMore": "Know more",
+      "changeSource": "Change news source",
+      "newSource": "News source",
+      "selectSource": "Select news source",
+      "save": "Save",
+      "cancel": "Cancel"
+    }
+  },
+  "pomodoro": {
+    "title": "Pomodoro mode",
+    "start": "Start",
+    "stop": "Pause",
+    "reset": "Reset",
+    "timerSetting": {
+      "pomodoro": "Pomodoro",
+      "shortBreak": "Short break",
+      "longBreak": "Long break"
+    }
+  },
+  "categories": {
+    "business": "Business",
+    "entertainment": "Entertainment",
+    "general": "General",
+    "health": "Health",
+    "science": "Science",
+    "sports": "Sports",
+    "technology": "Technology"
+  },
+  "sources": {
+    "bbcNews": "BBC news",
+    "theVerge": "The verge",
+    "businessInsider": "Business insider",
+    "time": "Time",
+    "theNextWeb": "The next web",
+    "abcNews": "ABC news",
+    "engadget": "Engadget",
+    "entertainmentWeekly": "Entertainment weekly",
+    "espn": "ESPN",
+    "financialPost": "Financial post"
+  },
+  "tags": {
+    "search": "Search",
+    "date": "Date",
+    "source": "Source",
+    "category": "Category"
+  },
+  "default": {
+    "title": "News app",
+    "author": "Anshu agrawal",
+    "description": "Get the latest news from around the world. Stay updated with the latest headlines, breaking news, and in-depth analysis on current events. Explore a wide range of topics including politics, business, technology, entertainment, and more. Our news platform provides real-time updates and comprehensive coverage to keep you informed and engaged."
   }
 }

@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { either, isEmpty, isNil } from "ramda";
 
 export const DEFAULT_PAGE_SIZE = 2;
@@ -19,26 +20,29 @@ export const convertDate = dateStr => {
 export const isEmptyOrUndefined = either(isEmpty, isNil);
 
 export const newsCategoryOptions = [
-  { label: "Business", value: "business" },
-  { label: "Entertainment", value: "entertainment" },
-  { label: "General", value: "general" },
-  { label: "Health", value: "health" },
-  { label: "Science", value: "science" },
-  { label: "Sports", value: "sports" },
-  { label: "Technology", value: "technology" },
+  { label: t("categories.business"), value: "business" },
+  { label: t("categories.entertainment"), value: "entertainment" },
+  { label: t("categories.general"), value: "general" },
+  { label: t("categories.health"), value: "health" },
+  { label: t("categories.science"), value: "science" },
+  { label: t("categories.sports"), value: "sports" },
+  { label: t("categories.technology"), value: "technology" },
 ];
 
 export const newsOptions = [
-  { label: "BBC News", value: "bbc-news" },
-  { label: "The Verge", value: "the-verge" },
-  { label: "Business Insider", value: "business-insider" },
-  { label: "Time", value: "time" },
-  { label: "The Next Web", value: "the-next-web" },
-  { label: "ABC News", value: "abc-news" },
-  { label: "Engadget", value: "engadget" },
-  { label: "Entertainment Weekly", value: "entertainment-weekly" },
-  { label: "ESPN", value: "espn" },
-  { label: "Financial Post", value: "financial-post" },
+  { label: t("sources.bbcNews"), value: "bbc-news" },
+  { label: t("sources.theVerge"), value: "the-verge" },
+  { label: t("sources.business-insider"), value: "business-insider" },
+  { label: t("sources.time"), value: "time" },
+  { label: t("sources.theNextWeb"), value: "the-next-web" },
+  { label: t("sources.abcNews"), value: "abc-news" },
+  { label: t("sources.engadget"), value: "engadget" },
+  {
+    label: t("sources.entertainmentWeekly"),
+    value: "entertainmentWeekly",
+  },
+  { label: t("sources.espn"), value: "espn" },
+  { label: t("sources.financialPost"), value: "financial-post" },
 ];
 
 export const fallbackImage = poster => {
@@ -49,22 +53,21 @@ export const fallbackImage = poster => {
   return `${poster}`;
 };
 
-export const DEFAULT_DESCRIPTION =
-  "Get the latest news from around the world. Stay updated with the latest headlines, breaking news, and in-depth analysis on current events. Explore a wide range of topics including politics, business, technology, entertainment, and more. Our news platform provides real-time updates and comprehensive coverage to keep you informed and engaged.";
+export const DEFAULT_DESCRIPTION = t("default.description");
 
-export const DEFAULT_TITLE = "News App";
+export const DEFAULT_TITLE = t("default.title");
 
-export const DEFAULT_AUTHOR = "Anshu Agrawal";
+export const DEFAULT_AUTHOR = t("default.author");
 
 export const DEFAULT_IMAGE =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsBGOs2225fFqTfnl5EKlrEUBn5-drby1x3Q&s";
 
 export const tagsLabelValues = ({ searchTerm, dateTo, source, category }) => {
   const arr = [
-    { label: "search", value: searchTerm },
-    { label: "date", value: dateTo },
-    { label: "source", value: source },
-    { label: "category", value: category },
+    { label: t("tags.search"), value: searchTerm },
+    { label: t("tags.date"), value: dateTo },
+    { label: t("tags.source"), value: source },
+    { label: t("tags.category"), value: category },
   ].filter(
     ({ value }) => value !== null && value !== "" && value !== undefined
   );
