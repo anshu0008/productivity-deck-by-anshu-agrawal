@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Pane, Button, Input, DatePicker, Select } from "@bigbinary/neetoui";
 import { useTranslation } from "react-i18next";
 
-import { newsCategoryOptions } from "../constant";
+import { getNewsCategoryOptions } from "../utils";
 
 const Filter = ({
   setIsOpenFilter,
@@ -21,6 +21,8 @@ const Filter = ({
 
   const [newsCategory, setNewsCategory] = useState([]);
 
+  const newsCategoryOptions = getNewsCategoryOptions();
+
   const { t } = useTranslation();
 
   const handleFilter = () => {
@@ -29,7 +31,7 @@ const Filter = ({
       dateFrom: date.dateFrom,
       dateTo: date.dateTo,
       category: newsCategory.map(item => item.value),
-      sources: null,
+      source: null,
     });
 
     handleClose();

@@ -22,6 +22,7 @@ const News = () => {
     source = null,
     category = null,
   } = useQueryParams();
+
   const history = useHistory();
 
   const params = {
@@ -40,9 +41,7 @@ const News = () => {
     from: dateFrom,
     to: dateTo,
     sources: source,
-    category: Array.isArray(category)
-      ? category.map(item => item).join(",")
-      : category,
+    category,
   });
 
   const handlePageNavigation = page =>
@@ -61,8 +60,6 @@ const News = () => {
       ...params,
       ...updatedValue,
     };
-
-    console.log("updatedParam", updatedParam);
 
     history.push(
       isEmpty(updatedParam.searchTerm)

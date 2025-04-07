@@ -13,7 +13,7 @@ import {
   DEFAULT_TITLE,
   DEFAULT_AUTHOR,
   DEFAULT_IMAGE,
-} from "./constant";
+} from "./utils";
 
 const List = ({ articles, searchTerm }) => {
   const { t } = useTranslation();
