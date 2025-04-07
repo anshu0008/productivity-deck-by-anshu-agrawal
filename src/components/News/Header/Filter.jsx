@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Pane, Button, Input, DatePicker, Select } from "@bigbinary/neetoui";
+import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 
 import { getNewsCategoryOptions } from "../utils";
@@ -93,6 +94,7 @@ const Filter = ({
             <DatePicker
               className="w-96"
               format={t("news.filter.datePlaceholder")}
+              maxDate={dayjs()}
               placeholder={t("news.filter.datePlaceholder")}
               value={date.dateFrom}
               onChange={(_, dateStr) =>
@@ -110,14 +112,17 @@ const Filter = ({
             <DatePicker
               className="w-96"
               format={t("news.filter.datePlaceholder")}
+              maxDate={dayjs()}
+              minDate={dayjs(date.dateFrom, t("news.filter.datePlaceholder"))}
               placeholder={t("news.filter.datePlaceholder")}
               value={date.dateTo}
-              onChange={(_, dateStr) =>
+              onChange={(_, dateStr) => {
                 setDate(prev => ({
                   ...prev,
                   dateTo: dateStr,
-                }))
-              }
+                }));
+                console.log(dateStr);
+              }}
             />
           </div>
         </div>
