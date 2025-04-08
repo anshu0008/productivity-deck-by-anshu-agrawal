@@ -7,11 +7,14 @@ import { formatTime } from "./constant";
 
 const Timer = ({ settings, setActiveTab, activeTab }) => {
   const { time } = settings;
+
   const [timeLeft, setTimeLeft] = useState(time || 0);
+
   const [isRunning, setIsRunning] = useState({
     check: false,
     mode: "Pomodoro",
   });
+
   const intervalRef = useRef(null);
 
   const { t } = useTranslation();
@@ -35,14 +38,14 @@ const Timer = ({ settings, setActiveTab, activeTab }) => {
           }
         }
 
-        setTimeLeft(prev => {
-          if (prev < 1) {
+        setTimeLeft(previous => {
+          if (previous < 1) {
             clearInterval(intervalRef.current);
 
             return 0;
           }
 
-          return prev - 1;
+          return previous - 1;
         });
       }, 1000);
     }
@@ -57,7 +60,7 @@ const Timer = ({ settings, setActiveTab, activeTab }) => {
   const handleReset = () => {
     clearInterval(intervalRef.current);
     setTimeLeft(time);
-    setIsRunning(prev => ({ ...prev, check: false }));
+    setIsRunning(previous => ({ ...previous, check: false }));
   };
 
   return (
@@ -69,7 +72,7 @@ const Timer = ({ settings, setActiveTab, activeTab }) => {
           label={isRunning.check ? t("pomodoro.stop") : t("pomodoro.start")}
           style="secondary"
           onClick={() =>
-            setIsRunning(prev => ({ ...prev, check: !prev.check }))
+            setIsRunning(previous => ({ ...previous, check: !previous.check }))
           }
         />
         <Button

@@ -20,7 +20,9 @@ const Header = ({
   totalResults = "10",
 }) => {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
+
   const [isOpenModal, setIsOpenModal] = useState(false);
+
   const [searchKey, setSearchKey] = useState(searchTerm || "");
 
   const { t } = useTranslation();
@@ -99,13 +101,13 @@ const Header = ({
                 const isArray = Array.isArray(item.value);
 
                 return isArray ? (
-                  item.value.map(val => (
+                  item.value.map(value => (
                     <Tag
                       className="cursor-pointer"
-                      key={val}
-                      label={val}
+                      key={value}
+                      label={value}
                       style="secondary"
-                      onClose={() => handleTagClose({ ...item, value: val })}
+                      onClose={() => handleTagClose({ ...item, value })}
                     />
                   ))
                 ) : (

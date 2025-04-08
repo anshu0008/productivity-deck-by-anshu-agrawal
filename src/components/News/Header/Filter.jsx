@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
-import { Pane, Button, Input, DatePicker, Select } from "@bigbinary/neetoui";
+import {
+  Typography,
+  Pane,
+  Button,
+  Input,
+  DatePicker,
+  Select,
+} from "@bigbinary/neetoui";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 
@@ -54,7 +61,9 @@ const Filter = ({
   return (
     <Pane isOpen={isOpenFilter} onClose={() => setIsOpenFilter(false)}>
       <Pane.Header>
-        <h2 className="text-xl font-bold">{t("news.filter.title")}</h2>
+        <Typography className="text-xl font-bold" style="h2" weight="bold">
+          {t("news.filter.title")}
+        </Typography>
       </Pane.Header>
       <Pane.Body>
         <div className="space-y-4">
@@ -98,8 +107,8 @@ const Filter = ({
               placeholder={t("news.filter.datePlaceholder")}
               value={date.dateFrom}
               onChange={(_, dateStr) =>
-                setDate(prev => ({
-                  ...prev,
+                setDate(previous => ({
+                  ...previous,
                   dateFrom: dateStr,
                 }))
               }
@@ -117,11 +126,10 @@ const Filter = ({
               placeholder={t("news.filter.datePlaceholder")}
               value={date.dateTo}
               onChange={(_, dateStr) => {
-                setDate(prev => ({
-                  ...prev,
+                setDate(previous => ({
+                  ...previous,
                   dateTo: dateStr,
                 }));
-                console.log(dateStr);
               }}
             />
           </div>

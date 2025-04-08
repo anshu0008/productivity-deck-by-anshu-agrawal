@@ -11,6 +11,7 @@ const ChangeSourceModal = ({
   updateQueryParams,
 }) => {
   const [newsSource, setNewsSource] = useState({});
+
   const newsSourceOptions = getNewsSourceOptions();
 
   const { t } = useTranslation();

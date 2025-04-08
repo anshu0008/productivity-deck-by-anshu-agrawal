@@ -9,6 +9,7 @@ import Timer from "./Timer";
 
 const Pomodoro = () => {
   const [activeTab, setActiveTab] = useState("Pomodoro");
+
   const { t } = useTranslation();
 
   return (

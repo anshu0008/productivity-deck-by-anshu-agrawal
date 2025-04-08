@@ -17,6 +17,7 @@ import {
 
 const List = ({ articles, searchTerm }) => {
   const { t } = useTranslation();
+
   if (isEmptyOrUndefined(articles)) {
     return (
       <NoData
@@ -56,7 +57,7 @@ const List = ({ articles, searchTerm }) => {
               </Typography>
             </div>
             <Typography className="text-gray-500" style="body2">
-              {convertDate(article.publishedAt)} &middot;
+              {convertDate(article.publishedAt)} &middot;&nbsp;
               {isNil(article.author) ? DEFAULT_AUTHOR : article.author}
             </Typography>
           </div>
@@ -65,8 +66,8 @@ const List = ({ articles, searchTerm }) => {
               alt={article.title}
               className="h-full w-full rounded-lg object-fill"
               src={fallbackImage(article.urlToImage)}
-              onError={e => {
-                e.currentTarget.src = DEFAULT_IMAGE;
+              onError={event => {
+                event.currentTarget.src = DEFAULT_IMAGE;
               }}
             />
           </div>

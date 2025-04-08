@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 const SearchBar = ({ updateQueryParams, setSearchKey, searchKey }) => {
   const inputRef = useRef(null);
+
   useSearchOnFocus({ inputRef });
 
   const { t } = useTranslation();
