@@ -8,9 +8,13 @@ import { Button, Input, Typography } from "neetoui";
 import { useTranslation } from "react-i18next";
 import { useKanbanStore } from "stores/useKanbanStore";
 
+import { formatText } from "./utils";
+
 const Kanban = () => {
   const { columns, addTask, moveTask, deleteTask } = useKanbanStore.pick();
+
   const [input, setInput] = useState({ todo: "", inprogress: "", done: "" });
+
   const [isAddTasks, setIsAddTasks] = useState({
     todo: false,
     inprogress: false,
@@ -80,14 +84,14 @@ const Kanban = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className="mb-2 flex h-full w-full items-center justify-between rounded bg-white px-3 py-2 text-sm shadow"
+                              className="mb-2 flex h-full w-full items-center justify-between overflow-hidden rounded bg-white px-3 py-2 text-sm shadow"
                             >
                               <Typography
                                 className={classNames({
                                   "line-through": colId === "done",
                                 })}
                               >
-                                {text}
+                                {formatText(text)}
                               </Typography>
                               <Button
                                 icon={Delete}
@@ -111,8 +115,8 @@ const Kanban = () => {
                     onChange={e =>
                       setInput({ ...input, [colId]: e.target.value })
                     }
-                    onKeyDown={e => {
-                      if (e.key === "Enter" && input[colId].trim()) {
+                    onKeyDown={({ key }) => {
+                      if (key === "Enter" && input[colId].trim()) {
                         addTask(colId, input[colId]);
                         setInput({ ...input, [colId]: "" });
                         setIsAddTasks({ ...isAddTasks, [colId]: false });
@@ -127,7 +131,7 @@ const Kanban = () => {
                 iconPosition="right"
                 style="secondary"
                 onClick={() =>
-                  setIsAddTasks(prev => ({ [colId]: !prev[colId] }))
+                  setIsAddTasks(previous => ({ [colId]: !previous[colId] }))
                 }
               >
                 {t("kanban.addTask")}

@@ -2,7 +2,7 @@ import React from "react";
 
 import { SideBar } from "components/common";
 import PageNotFound from "components/common/PageNotFound";
-import Kanban from "components/Kanban";
+import Kanban from "components/Kanban/Kanban";
 import News from "components/News";
 import Pomodoro from "components/Pomodoro";
 import { Switch, Route, Redirect } from "react-router-dom";

@@ -1,5 +1,6 @@
+import newsApi from "apis/news";
+import { uniq } from "ramda";
 import { useQueries, useQuery } from "react-query";
-import newsApi from "src/api/News";
 
 import { QUERY_KEYS } from "../../constants/query";
 
@@ -22,7 +23,7 @@ export const useNewsFetch = params => {
     enabled: !!params.q.trim(),
   });
 
-  const combinedData = response.reduce((acc, { data }) => {
+  const combinedData = uniq(response).reduce((acc, { data }) => {
     if (data) {
       acc.push(...data.articles);
     }

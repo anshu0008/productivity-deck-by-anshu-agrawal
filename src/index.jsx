@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { ToastContainer } from "react-toastify";
 import queryClient from "utils/queryClient";
 
-import initializeAxios from "./api/axios";
+import initializeAxios from "./apis/axios";
 import App from "./App";
 import "./common/i18n";
 import "./index.css";

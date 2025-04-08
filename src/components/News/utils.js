@@ -1,17 +1,8 @@
+import dayjs from "dayjs";
 import { t } from "i18next";
 import { either, isEmpty, isNil } from "ramda";
 
-export const convertDate = dateStr => {
-  const date = new Date(dateStr);
-
-  const formattedDate = new Intl.DateTimeFormat("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(date);
-
-  return formattedDate;
-};
+export const convertDate = dateStr => dayjs(dateStr).format("DD MMM YYYY");
 
 export const isEmptyOrUndefined = either(isEmpty, isNil);
 
