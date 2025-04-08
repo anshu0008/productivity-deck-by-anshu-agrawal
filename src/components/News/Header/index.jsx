@@ -17,7 +17,7 @@ const Header = ({
   dateTo,
   source,
   category,
-  totalResults = "10",
+  totalResults,
 }) => {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
 
